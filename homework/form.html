@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"> 
+
+        <style>
+            .nobr
+            {
+                display: block;
+                width: auto;
+                height: 0px;
+            }
+
+            .nobr br
+            {
+                display: none;
+            }
+
+            .title
+            {
+                font-size: 40px;
+                font-family: 'Roboto', sans-serif;
+                text-align: left;
+                color: white;
+            }
+
+            .box
+            {
+                width: 600px;
+                height: 750px;
+                margin-top: 90px;
+                margin-left: auto;
+                margin-right: auto;
+                border: none;
+                border-radius: 10px;
+            }
+
+            .ctt
+            {
+                margin-top: 20px;
+                width: 600px;
+                height: 700px;
+                margin-left: auto;
+                margin-right: auto;
+                border: none;
+                border-radius: 20px;
+                background-color: white;
+            }
+
+            .tip
+            {
+                color: gray;
+                font-size: 20px;
+                font-family: 'Roboto', sans-serif;
+                margin-left: 75px;
+                padding-top: 70px;
+            }
+
+            .ipt
+            {
+                width: 300px;
+                height: 40px;
+                font-size: 20px;
+                font-family: 'Roboto', sans-serif;
+                margin-top: 62px;
+                margin-left: 210px;
+                padding-left: 10px;
+                border:1px solid gray;
+                border-radius: 10px;
+            }
+
+            .ipt:focus
+            {
+                outline: none !important;
+                border:1px solid cornflowerblue;;
+                box-shadow: 0 0 5px cornflowerblue;
+            }
+
+            .hrd
+            {
+                margin-top: 50px;
+                margin-left: auto;
+                margin-right: auto;
+                width: 570px;
+            }
+
+            .check
+            {
+                color: gray;
+                margin-top: 40px;
+                text-align: center;
+                font-family: 'Roboto', sans-serif;
+            }
+
+            .tos
+            {
+                color: cornflowerblue;
+                text-decoration: none;
+            }
+
+            .final
+            {
+                margin-top: 40px;
+                text-align: center;
+            }
+
+            .btn
+            {
+                border: none;
+                border-radius: 10px;
+                color: white;
+                padding: 15px 30px;
+                font-size: 30px;
+                cursor: pointer;
+            }
+
+            .sub
+            {
+                background-color: #2196F3;
+            }
+
+            .sub:hover
+            {
+                background: #0b7dda;
+            }
+        </style>
+    </head>
+
+    <body style="background-color: cornflowerblue;">
+        <div class="box">
+            <div class="title">
+                Sign up
+            </div>
+
+            <div class="ctt">
+                <div class="nobr">
+                    <div class="tip">
+                        Full name
+                    </div>
+                </div>
+
+                <input type="text" class="ipt">
+
+                <div class="hrd">
+                    <hr>
+                </div>
+
+                <div class="nobr">
+                    <div class="tip">
+                        E - mail
+                    </div>
+                </div>
+
+                <input type="email" class="ipt">
+
+                <div class="hrd">
+                    <hr>
+                </div>
+
+                <div class="nobr">
+                    <div class="tip">
+                        Password
+                    </div>
+                </div>
+
+                <input type="password" class="ipt">
+
+                <div class="hrd">
+                    <hr>
+                </div>
+
+                <div class="check">
+                    <input type="checkbox">
+
+                    I agree all statements in
+
+                    <a href="#" class="tos">
+                        Terms of service
+                    </a>
+                </div>
+
+                <div class="final">
+                    <button class="btn sub">
+                        <b>
+                            Submit
+                        </b>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
