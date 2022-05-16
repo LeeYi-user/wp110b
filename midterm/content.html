@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            .output
+            {
+                float: left;
+                height: 400px;
+                width: 375px;
+                margin-top: 17px;
+                margin-left: 17px;
+                border: 1px solid black;
+                overflow-y:scroll;
+                font-size: 25px;
+            }
+
+            .input
+            {
+                float: left;
+                height: 400px;
+                width: 450px;
+                margin-top: 17px;
+                margin-left: 20px;
+                border: 1px solid black;
+            }
+
+            .part1
+            {
+                margin-top: 70px;
+                margin-left: 92px;
+            }
+
+            .part2
+            {
+                margin-top: 25px;
+                margin-left: 92px;
+            }
+
+            .describe
+            {
+                float: left;
+                font-size: 20px;
+                text-align: center;
+            }
+
+            .box
+            {
+                width: 200px;
+                height: 30px;
+                font-size: 20px;
+                padding-left: 5px;
+                margin-left: 10px;
+                border:1px solid black;
+            }
+
+            .box:focus
+            {
+                outline: none !important;
+            }
+
+            .part3
+            {
+                margin-top: 70px;
+                text-align: center;
+            }
+
+            .btn
+            {
+                border: none;
+                color: white;
+                padding: 10px 20px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+
+            .sure
+            {
+                background-color: gray;
+            }
+
+            .sure:hover
+            {
+                background: black;
+            }
+        </style>
+
+        <script>
+            var count = 0, time = 0, intervalID = window.setInterval(timer, 1000), number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"], answer = [];
+
+            for (let i = 0; i < 4; i++)
+            {
+                let index = Math.floor(Math.random() * number.length);
+                answer.push(number[index]);
+                number.splice(index, 1);
+            }
+
+            console.log(answer[0] + answer[1] + answer[2] + answer[3]);
+
+            function wrong(ele)
+            {
+                alert("請輸入四個不同的數字");
+                ele.value = null;
+            }
+
+            function stop()
+            {
+                clearInterval(intervalID);
+                document.getElementById("enter").readOnly = true;
+                document.getElementById("enter").blur();
+                document.getElementById("sure").textContent = "重來";
+            }
+
+            function counter(ele)
+            {
+                if (event.key === "Enter" || event.key == null)
+                {
+                    if (document.getElementById("sure").textContent == "重來")
+                    {
+                        if (event.key == null)
+                        {
+                            location.reload();
+                        }
+
+                        return;
+                    }
+
+                    if (ele.value.length == 4)
+                    {
+                        for (let i = 0; i < 4; i++)
+                        {
+                            if (isNaN(ele.value[i]))
+                            {
+                                wrong(ele);
+                                return;
+                            }
+                            else if (i == 3)
+                            {
+                                for (let j = 0; j < 3; j++)
+                                {
+                                    for (let k = j + 1; k < 4; k++)
+                                    {
+                                        if (ele.value[j] == ele.value[k])
+                                        {
+                                            wrong(ele);
+                                            return;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (ele.value == "放棄")
+                        {
+                            alert("公布答案: " + answer[0] + answer[1] + answer[2] + answer[3]);
+                            stop();
+                            return;
+                        }
+                        else
+                        {
+                            wrong(ele);
+                            return;
+                        }
+                    }
+
+                    let a = 0, b = 0;
+
+                    for (let i = 0; i < 4; i++)
+                    {
+                        if (ele.value[i] == answer[i])
+                        {
+                            a++;
+                        }
+                        else if (answer.includes(ele.value[i]))
+                        {
+                            b++;
+                        }
+                    }
+
+                    document.getElementById("output").innerHTML = document.getElementById("output").innerHTML + ele.value + " - " + a + "A" + b + "B" + "<br>";
+                    count++;
+                    document.getElementById("counter").value = count;
+
+                    setTimeout(() =>
+                    {
+                        if (a == 4)
+                        {
+                            alert("恭喜猜對");
+                            stop();
+                            return;
+                        }
+
+                        ele.value = null;
+                    }, 1);
+                }
+            }
+
+            function timer()
+            {
+                time++;
+                document.getElementById("timer").value = time;
+            }
+        </script>
+    </head>
+
+    <body>
+        <div>
+            <div class="output" id="output">
+
+            </div>
+
+            <div class="input">
+                <div class="part1">
+                    <div class="describe">
+                        次數:
+                    </div>
+
+                    <input type="text" class="box" id="counter" value="0" readonly>
+                </div>
+
+                <div class="part2">
+                    <div class="describe">
+                        時間:
+                    </div>
+
+                    <input type="text" class="box" id="timer" value="0" readonly>
+                </div>
+
+                <div class="part2">
+                    <div class="describe">
+                        輸入:
+                    </div>
+
+                    <input type="text" class="box" id="enter" onkeydown="counter(this)">
+                </div>
+
+                <div class="part3">
+                    <button class="btn sure" id="sure" onclick="counter(document.getElementById('enter'))">
+                        確定
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

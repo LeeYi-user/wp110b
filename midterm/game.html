@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            .header
+            {
+                text-align: center;
+                margin-top: 100px;
+            }
+
+            .content
+            {
+                height: 450px;
+                width: 900px;
+                border: 1px solid black;
+                margin-top: 50px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .output
+            {
+                float: left;
+                height: 400px;
+                width: 375px;
+                margin-top: 25px;
+                margin-left: 25px;
+                border: 1px solid black;
+                overflow-y:scroll;
+            }
+
+            .input
+            {
+                float: left;
+                height: 400px;
+                width: 450px;
+                margin-top: 25px;
+                margin-left: 20px;
+                border: 1px solid black;
+            }
+
+            .part1
+            {
+                margin-top: 25px;
+                text-align: center;
+            }
+
+            .part2
+            {
+                text-align: center;
+            }
+
+            .part3
+            {
+                margin-top: 50px;
+                text-align: center;
+            }
+
+            .btn
+            {
+                border: none;
+                color: white;
+                padding: 10px 20px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+
+            .start
+            {
+                background-color: gray;
+            }
+
+            .start:hover
+            {
+                background: black;
+            }
+
+            .footer
+            {
+                color: gray;
+                margin-top: 50px;
+                text-align: center;
+                visibility: hidden;
+            }
+        </style>
+
+        <script>
+            function start()
+            {
+                document.getElementById("content").innerHTML = '<iframe src="content.html" height="450" width="900" frameBorder="0"></iframe>';
+                document.getElementById("footer").style.visibility = "visible";
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>
+                猜數字
+            </h1>
+        </div>
+
+        <div class="content" id="content">
+            <div class="output">
+
+            </div>
+
+            <div class="input">
+                <div class="part1">
+                    <h2>
+                        遊戲規則
+                    </h2>
+                </div>
+
+                <div class="part2">
+                    <p>
+                        由電腦設定一組四碼的數字作為謎底，供玩家猜測。<br>
+                        每猜一個數，電腦就會根據這個數字來給玩家提示。<br>
+                        所有的提示都會列在左邊的列表，並以A和B來表示。<br>
+                        A代表猜測的數字中，數字相同且位置也正確的個數。<br>
+                        B代表猜測的數字中，數字相同但位置不一樣的個數。<br>
+                        <br>
+                        例如，謎底為8123，玩家猜1052，電腦會提示0A2B。<br>
+                        例如，謎底為5637，玩家猜4931，電腦會提示1A0B。
+                    </p>
+                </div>
+
+                <div class="part3">
+                    <button class="btn start" onclick="start()">
+                        開始
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer" id="footer">
+            如果想放棄，就在輸入框中輸入「放棄」
+        </div>
+    </body>
+</html>
