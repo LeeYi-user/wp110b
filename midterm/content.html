@@ -86,8 +86,9 @@
         </style>
 
         <script>
-            var count = 0, time = 0, intervalID = window.setInterval(timer, 1000), number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"], answer = [];
+            var count = 0, time = 0, intervalID = window.setInterval(timer, 1000), answer = [];
 
+            let number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
             for (let i = 0; i < 4; i++)
             {
                 let index = Math.floor(Math.random() * number.length);
@@ -97,21 +98,19 @@
 
             console.log(answer[0] + answer[1] + answer[2] + answer[3]);
 
-            function wrong(ele)
+            function counter()
             {
-                alert("請輸入四個不同的數字");
-                ele.value = null;
+                count++;
+                document.getElementById("counter").value = count;
             }
 
-            function stop()
+            function timer()
             {
-                clearInterval(intervalID);
-                document.getElementById("enter").readOnly = true;
-                document.getElementById("enter").blur();
-                document.getElementById("sure").textContent = "重來";
+                time++;
+                document.getElementById("timer").value = time;
             }
 
-            function counter(ele)
+            function enter(ele)
             {
                 if (event.key === "Enter" || event.key == null)
                 {
@@ -125,48 +124,42 @@
                         return;
                     }
 
-                    if (ele.value.length == 4)
-                    {
-                        for (let i = 0; i < 4; i++)
-                        {
-                            if (isNaN(ele.value[i]))
-                            {
-                                wrong(ele);
-                                return;
-                            }
-                            else if (i == 3)
-                            {
-                                for (let j = 0; j < 3; j++)
-                                {
-                                    for (let k = j + 1; k < 4; k++)
-                                    {
-                                        if (ele.value[j] == ele.value[k])
-                                        {
-                                            wrong(ele);
-                                            return;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else
+                    if (ele.value.length != 4)
                     {
                         if (ele.value == "放棄")
                         {
-                            alert("公布答案: " + answer[0] + answer[1] + answer[2] + answer[3]);
-                            stop();
-                            return;
+                            stop("公布答案: " + answer[0] + answer[1] + answer[2] + answer[3]);
                         }
                         else
+                        {
+                            wrong(ele);
+                        }
+
+                        return;
+                    }
+
+                    for (let i = 0; i < 4; i++)
+                    {
+                        if (isNaN(ele.value[i]))
                         {
                             wrong(ele);
                             return;
                         }
                     }
 
-                    let a = 0, b = 0;
+                    for (let i = 0; i < 3; i++)
+                    {
+                        for (let j = i + 1; j < 4; j++)
+                        {
+                            if (ele.value[i] == ele.value[j])
+                            {
+                                wrong(ele);
+                                return;
+                            }
+                        }
+                    }
 
+                    let a = 0, b = 0;
                     for (let i = 0; i < 4; i++)
                     {
                         if (ele.value[i] == answer[i])
@@ -179,28 +172,38 @@
                         }
                     }
 
-                    document.getElementById("output").innerHTML = document.getElementById("output").innerHTML + ele.value + " - " + a + "A" + b + "B" + "<br>";
-                    count++;
-                    document.getElementById("counter").value = count;
+                    document.getElementById("output").innerHTML = document.getElementById("output").innerHTML + 
+                    ele.value + " - " + a + "A" + b + "B" + "<br>";
+                    counter();
 
-                    setTimeout(() =>
+                    if (a == 4)
                     {
-                        if (a == 4)
+                        setTimeout(() =>
                         {
-                            alert("恭喜猜對");
-                            stop();
+                            stop("恭喜猜對");
                             return;
-                        }
-
+                        }, 1);
+                    }
+                    else
+                    {
                         ele.value = null;
-                    }, 1);
+                    }
                 }
             }
 
-            function timer()
+            function stop(msg)
             {
-                time++;
-                document.getElementById("timer").value = time;
+                alert(msg);
+                clearInterval(intervalID);
+                document.getElementById("enter").readOnly = true;
+                document.getElementById("enter").blur();
+                document.getElementById("sure").textContent = "重來";
+            }
+
+            function wrong(ele)
+            {
+                alert("請輸入四個不同的數字");
+                ele.value = null;
             }
         </script>
     </head>
@@ -233,11 +236,11 @@
                         輸入:
                     </div>
 
-                    <input type="text" class="box" id="enter" onkeydown="counter(this)">
+                    <input type="text" class="box" id="enter" autocomplete="off" onkeydown="enter(this)">
                 </div>
 
                 <div class="part3">
-                    <button class="btn sure" id="sure" onclick="counter(document.getElementById('enter'))">
+                    <button class="btn sure" id="sure" onclick="enter(document.getElementById('enter'))">
                         確定
                     </button>
                 </div>
