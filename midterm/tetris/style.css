@@ -1,0 +1,46 @@
+.header
+{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.playfield
+{
+    text-align: center;
+}
+
+#playfield
+{
+    z-index:-1;
+    position:absolute;
+    margin-left: -150px;
+    border: 1px solid black;
+}
+
+.start
+{
+    text-align: center;
+    margin-top: 300px;
+}
+
+#start
+{
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: gray;
+}
+
+#start:hover
+{
+    background: black;
+}
+
+#score
+{
+    text-align: center;
+    margin-top: 350px;
+    color: gray;
+}
