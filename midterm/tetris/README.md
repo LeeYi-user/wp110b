@@ -10,3 +10,6 @@
 
 ## 遊戲說明
 https://zh.wikipedia.org/wiki/俄羅斯方塊
+
+## 授權聲明
+[LICENSE](LICENSE)

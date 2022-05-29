@@ -8,3 +8,6 @@
 
 ## 遊戲說明
 https://zh.wikipedia.org/zh-tw/1A2B
+
+## 授權聲明
+[LICENSE](LICENSE)
