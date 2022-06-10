@@ -9,8 +9,8 @@
 * D - 右移
 
 ## 遊戲說明
-https://youtu.be/AYUAK7K2kG4  
-https://zh.wikipedia.org/wiki/俄羅斯方塊
+[影片](https://youtu.be/aLtghx8hXWk)
+[文章](https://zh.wikipedia.org/wiki/俄羅斯方塊)
 
 ## 授權聲明
 [LICENSE](LICENSE)
