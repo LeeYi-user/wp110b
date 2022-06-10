@@ -7,7 +7,7 @@
 若使用者成功猜對數字，則可以再按下`重來`，開始新的遊戲。
 
 ## 遊戲說明
-https://youtu.be/1EIPTtsE2iY
+https://youtu.be/1EIPTtsE2iY  
 https://zh.wikipedia.org/zh-tw/1A2B
 
 ## 授權聲明

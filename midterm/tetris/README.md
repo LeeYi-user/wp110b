@@ -9,7 +9,7 @@
 * D - 右移
 
 ## 遊戲說明
-https://youtu.be/AYUAK7K2kG4
+https://youtu.be/AYUAK7K2kG4  
 https://zh.wikipedia.org/wiki/俄羅斯方塊
 
 ## 授權聲明
