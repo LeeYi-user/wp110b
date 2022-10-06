@@ -283,6 +283,8 @@ function start()
     {
         //把正在掉落的方塊畫在陣列裡
         draw1(1);
+        //比較陣列跟畫面的差異, 並把出現在畫面上的多餘方塊抹除
+        draw2(0);
 
         //當方塊碰到底部且要放置時將觸發該條件
         if (move2 == 0)
@@ -366,9 +368,6 @@ function start()
                 }
 
                 document.getElementById("score").innerHTML = score;
-
-                //比較陣列跟畫面的差異, 並把出現在畫面上的多餘方塊抹除
-                draw2(0);
             }
 
             //回到主程式開始的位置, 有點類似continue
@@ -435,7 +434,7 @@ function start()
                         if (key == "w" && check(1, 0, 0) == 1)
                         {
                             face++;
-        
+
                             if (face == 4)
                             {
                                 face = 0;
@@ -466,8 +465,6 @@ function start()
                     move1 = 1;
                 }
 
-                //比較陣列跟畫面的差異, 並把出現在畫面上的多餘方塊抹除
-                draw2(0);
                 setTimeout(loop1, 1);
             }
         }
